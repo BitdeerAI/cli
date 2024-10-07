@@ -6,14 +6,14 @@ To install `bitdeer-ai`, follow these steps:
 
 1. Download the binary
   - For Windows: 
-    - amd64 [link to Windows binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.1/windows_amd64.zip)
-    - arm64 [link to Windows binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.1/windows_arm64.zip)
+    - amd64 [link to Windows binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/windows_amd64.zip)
+    - arm64 [link to Windows binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/windows_arm64.zip)
   - For macOS:
-    - amd64 [link to macOS binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.1/darwin_amd64.zip)
-    - arm64 [link to macOS binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.1/darwin_arm64.zip) 
+    - amd64 [link to macOS binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/darwin_amd64.zip)
+    - arm64 [link to macOS binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/darwin_arm64.zip) 
   - For Linux:
-    - amd64 [link to Linux binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.1/linux_amd64.zip)
-    - arm64 [link to Linux binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.1/linux_arm64.zip)
+    - amd64 [link to Linux binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/linux_amd64.zip)
+    - arm64 [link to Linux binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/linux_arm64.zip)
 2. Install the binary:
   - Move the downloaded binary to a directory included in your system's PATH.
 3. Verify the installation:
@@ -62,7 +62,7 @@ bitdeer-ai training create [flags]
 ```
 Examples
 ```
-bitdeer-ai training create -p <project-id> -n <job-name> -j <job-type> -w <worker-spec> -c <num-workers> -i <worker-image>
+bitdeer-ai training create -p <project-id> -n <job-name> -j <job-type> -w <worker-spec> -c <num-workers> -i <worker-image> -r <region-id> -z <zone-id>
 ```
 Flags
 - `-p, --project_id` **string**: Project ID (*required*)
@@ -71,6 +71,8 @@ Flags
 - `-w, --worker_spec` **string**: Worker Spec (*required*)
 - `-c, --num_workers` **int**: Number of Workers (*required*)
 - `-i, --worker_image` **string**: Worker Image (*required*)
+- `-r, --region_id` **string**: Region ID (required) (default "sg")
+- `-z, --zone_id` **string**: Zone ID (required) (default "sg-sg-1")
 - `--args` **stringArray**: Arguments
 - `--cmds` **stringArray**: Commands
 - `--envs` **stringArray**: Environment Variables
@@ -88,15 +90,15 @@ Examples
 ```
 bitdeer-ai training list
 
-+--------+--------+-----------+-----------+---------+------------+----------------------+----------------+
-| JOB_ID |  NAME  |  STATUS   |   TYPE    | WORKERS | GPUS/WORKER|    CREATED_TIME      |ATTACHED_PROJECT|
-+--------+--------+-----------+-----------+---------+------------+----------------------+----------------+
-| tj-03  | job-03 | COMPLETED | TORCH_JOB |       2 | 4x H100    | 2024-07-05T04:00:15Z | pj-01          |
-| tj-02  | job-02 | SUSPENDED | TORCH_JOB |       4 | 3x RTX3090 | 2024-07-05T03:30:45Z | pj-02          |
-| tj-01  | job-01 | FAILED    | TORCH_JOB |       6 | 2x RTX3090 | 2024-07-05T02:10:30Z | pj-01          |
-+--------+--------+-----------+-----------+---------+------------+----------------------+----------------+
-|                                                                  TOTAL:  3                             |
-+--------+--------+-----------+-----------+---------+------------+----------------------+----------------+
++--------+--------+-----------+-----------+---------+------------+----------------------+----------------+------------+
+| JOB_ID |  NAME  |  STATUS   |   TYPE    | WORKERS | GPUS/WORKER|    CREATED_TIME      |ATTACHED_PROJECT|   REGION   |
++--------+--------+-----------+-----------+---------+------------+----------------------+----------------+------------+
+| tj-03  | job-03 | COMPLETED | TORCH_JOB |       2 | 4x H100    | 2024-07-05T04:00:15Z | pj-01          | sg|sg-sg-1 |
+| tj-02  | job-02 | SUSPENDED | TORCH_JOB |       4 | 3x RTX3090 | 2024-07-05T03:30:45Z | pj-02          | sg|sg-sg-1 |
+| tj-01  | job-01 | FAILED    | TORCH_JOB |       6 | 2x RTX3090 | 2024-07-05T02:10:30Z | pj-01          | sg|sg-sg-1 |
++--------+--------+-----------+-----------+---------+------------+----------------------+----------------+------------+
+|                                                                  TOTAL:  3                                          |
++--------+--------+-----------+-----------+---------+------------+----------------------+----------------+------------+
 ```
 #### Display a training job:
 Usage
@@ -114,6 +116,7 @@ bitdeer-ai training get tj-03
 | JobName         | job-03                         |
 | ProjectID       | pj-01                          |
 | ProjectName     | LLM Project                    |
+| Region          | sg|sg-sg-1                     |
 | JobType         | TORCH_JOB                      |
 | JobStatus       | COMPLETED                      |
 | NumberOfWorkers | 2                              |
