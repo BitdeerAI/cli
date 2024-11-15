@@ -6,14 +6,14 @@ To install `bitdeer-ai`, follow these steps:
 
 1. Download the binary
   - For Windows: 
-    - amd64 [link to Windows binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/windows_amd64.zip)
-    - arm64 [link to Windows binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/windows_arm64.zip)
+    - amd64 [link to Windows binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.3/windows_amd64.zip)
+    - arm64 [link to Windows binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.3/windows_arm64.zip)
   - For macOS:
-    - amd64 [link to macOS binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/darwin_amd64.zip)
-    - arm64 [link to macOS binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/darwin_arm64.zip) 
+    - amd64 [link to macOS binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.3/darwin_amd64.zip)
+    - arm64 [link to macOS binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.3/darwin_arm64.zip) 
   - For Linux:
-    - amd64 [link to Linux binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/linux_amd64.zip)
-    - arm64 [link to Linux binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.2/linux_arm64.zip)
+    - amd64 [link to Linux binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.3/linux_amd64.zip)
+    - arm64 [link to Linux binary](https://github.com/BitdeerAI/cli/releases/download/v0.0.3/linux_arm64.zip)
 2. Install the binary:
   - Move the downloaded binary to a directory included in your system's PATH.
 3. Verify the installation:
