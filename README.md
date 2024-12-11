@@ -78,8 +78,8 @@ Flags:
 - `-a, --args` **stringArray**: Arguments
 - `-c, --cmds` **stringArray**: Commands
 - `-e, --envs` **stringArray**: Environment Variables
-- `-r, --region_id` **string**: Region ID (default 'sg')
-- `-z, --zone_id` **string**: Zone ID (default 'sg-sg-1')
+- `-r, --region_id` **string**: Region ID (default 'ap-southeast-1')
+- `-z, --zone_id` **string**: Zone ID (default 'ap-southeast-1a')
 - `-h, --help`: Help for create
 
 ### List containers
@@ -96,11 +96,11 @@ bitdeer-ai container list --per_page 5 --page 2
 +---------------+-------+----------------------+--------------------------------------+---------+------------+------------------+------------+
 | CONTAINER_ID  | NAME  | IMAGE                | MACHINE_SPECIFICATION                |  STATUS | CREATED_BY | ATTACHED_PROJECT | REGION     |
 +---------------+-------+----------------------+--------------------------------------+---------+------------+------------------+------------+
-| po-12345      | ctr1  | registry/pytorch:1.0 | 1x NVIDIA H100 GPU, 20 vCPUs, 194 GB | STOPPED | user@email | demo             | sg|sg-sg-1 |
-| po-23456      | ctr2  | registry/pytorch:1.0 | 1x NVIDIA H100 GPU, 20 vCPUs, 194 GB | STOPPED | user@email | demo             | sg|sg-sg-1 |
-| po-34567      | ctr3  | registry/pytorch:1.0 | 1x NVIDIA H100 GPU, 20 vCPUs, 194 GB | STOPPED | user@email | demo             | sg|sg-sg-1 |
-| po-45678      | ctr4  | registry/pytorch:1.0 | 1x NVIDIA H100 GPU, 20 vCPUs, 194 GB | STOPPED | user@email | demo             | sg|sg-sg-1 |
-| po-56789      | ctr5  | registry/pytorch:1.0 | 1x NVIDIA H100 GPU, 20 vCPUs, 194 GB | STOPPED | user@email | demo             | sg|sg-sg-1 |
+| po-12345      | ctr1  | registry/pytorch:1.0 | 1x NVIDIA H100 GPU, 20 vCPUs, 194 GB | STOPPED | user@email | demo             | ap-southeast-1|ap-southeast-1a |
+| po-23456      | ctr2  | registry/pytorch:1.0 | 1x NVIDIA H100 GPU, 20 vCPUs, 194 GB | STOPPED | user@email | demo             | ap-southeast-1|ap-southeast-1a |
+| po-34567      | ctr3  | registry/pytorch:1.0 | 1x NVIDIA H100 GPU, 20 vCPUs, 194 GB | STOPPED | user@email | demo             | ap-southeast-1|ap-southeast-1a |
+| po-45678      | ctr4  | registry/pytorch:1.0 | 1x NVIDIA H100 GPU, 20 vCPUs, 194 GB | STOPPED | user@email | demo             | ap-southeast-1|ap-southeast-1a |
+| po-56789      | ctr5  | registry/pytorch:1.0 | 1x NVIDIA H100 GPU, 20 vCPUs, 194 GB | STOPPED | user@email | demo             | ap-southeast-1|ap-southeast-1a |
 +---------------+-------+----------------------+--------------------------------------+---------+------------+------------------+------------+
 |               |       |                      |                                      |         | PAGE: 2/2  | TOTAL: 10        |            |
 +---------------+-------+----------------------+--------------------------------------+---------+------------+------------------+------------+
@@ -132,7 +132,7 @@ Container Overview:
 | Image                | registry/pytorch:latest                      |
 | MachineSpecification | 1x NVIDIA H100 GPU (80GB), 20 vCPUs (194 GB) |
 | Status               | RUNNING                                      |
-| Region               | sg|sg-sg-1                                   |
+| Region               | ap-southeast-1|ap-southeast-1a                                   |
 | CreatedBy            | user@email.com                               |
 | CreatedAt            | 2024-11-13T09:32:01Z                         |
 +----------------------+----------------------------------------------+
@@ -233,8 +233,8 @@ Flags
 - `-w, --worker_spec` **string**: Worker Spec (*required*)
 - `-c, --num_workers` **int**: Number of Workers (*required*)
 - `-i, --worker_image` **string**: Worker Image (*required*)
-- `-r, --region_id` **string**: Region ID (required) (default "sg")
-- `-z, --zone_id` **string**: Zone ID (required) (default "sg-sg-1")
+- `-r, --region_id` **string**: Region ID (required) (default "ap-southeast-1")
+- `-z, --zone_id` **string**: Zone ID (required) (default "ap-southeast-1a")
 - `--args` **stringArray**: Arguments
 - `--cmds` **stringArray**: Commands
 - `--envs` **stringArray**: Environment Variables
@@ -255,9 +255,9 @@ bitdeer-ai training list
 +--------+--------+-----------+-----------+---------+------------+----------------------+----------------+------------+
 | JOB_ID |  NAME  |  STATUS   |   TYPE    | WORKERS | GPUS/WORKER|    CREATED_TIME      |ATTACHED_PROJECT|   REGION   |
 +--------+--------+-----------+-----------+---------+------------+----------------------+----------------+------------+
-| tj-03  | job-03 | COMPLETED | TORCH_JOB |       2 | 4x H100    | 2024-07-05T04:00:15Z | pj-01          | sg|sg-sg-1 |
-| tj-02  | job-02 | SUSPENDED | TORCH_JOB |       4 | 3x RTX3090 | 2024-07-05T03:30:45Z | pj-02          | sg|sg-sg-1 |
-| tj-01  | job-01 | FAILED    | TORCH_JOB |       6 | 2x RTX3090 | 2024-07-05T02:10:30Z | pj-01          | sg|sg-sg-1 |
+| tj-03  | job-03 | COMPLETED | TORCH_JOB |       2 | 4x H100    | 2024-07-05T04:00:15Z | pj-01          | ap-southeast-1|ap-southeast-1a |
+| tj-02  | job-02 | SUSPENDED | TORCH_JOB |       4 | 3x RTX3090 | 2024-07-05T03:30:45Z | pj-02          | ap-southeast-1|ap-southeast-1a |
+| tj-01  | job-01 | FAILED    | TORCH_JOB |       6 | 2x RTX3090 | 2024-07-05T02:10:30Z | pj-01          | ap-southeast-1|ap-southeast-1a |
 +--------+--------+-----------+-----------+---------+------------+----------------------+----------------+------------+
 |                                                                  TOTAL:  3                                          |
 +--------+--------+-----------+-----------+---------+------------+----------------------+----------------+------------+
@@ -278,7 +278,7 @@ bitdeer-ai training get tj-03
 | JobName         | job-03                         |
 | ProjectID       | pj-01                          |
 | ProjectName     | LLM Project                    |
-| Region          | sg|sg-sg-1                     |
+| Region          | ap-southeast-1|ap-southeast-1a                     |
 | JobType         | TORCH_JOB                      |
 | JobStatus       | COMPLETED                      |
 | NumberOfWorkers | 2                              |
